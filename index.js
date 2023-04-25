@@ -31,7 +31,7 @@ let notes = [
 ]
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello world</h1>")
+  res.send("<h1>Lo Hice por ti para lograr decirte TE AMO en mi primer server Deployado *_* TE AMOO </h1>")
 })
 
 app.get("/api/notes", (req, res) => {
