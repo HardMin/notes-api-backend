@@ -48,11 +48,15 @@ app.get("/api/notes/:id", (req, res) => {
   }
 })
 
+
+
 app.delete("/api/notes/:id", (req, res) => {
   const id = Number(req.params.id)
   notes = notes.filter((note) => note.id !== id)
   res.status(204).end()
 })
+
+
 
 app.post("/api/notes", (req, res) => {
   const note = req.body
@@ -78,15 +82,26 @@ app.post("/api/notes", (req, res) => {
   res.status(201).json(newNote)
 })
 
+
+
+app.put("/api/notes/:id", (req, res) => {
+  const id = Number(req.params.id)
+
+  notes = notes.map(note => note.id === id ? { ...note, important: !note.important } : note)
+
+  console.log(notes);
+
+  res.status(200).json(notes)
+})
+
+
+
 app.use((req, res) => {
   res.status(404).json({
     error: "Not found",
   })
 })
 
-
-
 const PORT = process.env.PORT || 3001
 
 app.listen(PORT)
- 
